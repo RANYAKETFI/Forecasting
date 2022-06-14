@@ -10,7 +10,6 @@ from fbprophet import Prophet
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
-import numpy as np
 import json
 
 import plotly.express as px
