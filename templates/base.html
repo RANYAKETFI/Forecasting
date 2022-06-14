@@ -61,7 +61,29 @@
 		</div>
 		{% block sc %}
 		 {% endblock %}
-
+		 <script type="module">
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-analytics.js";
+			// TODO: Add SDKs for Firebase products that you want to use
+			// https://firebase.google.com/docs/web/setup#available-libraries
+		  
+			// Your web app's Firebase configuration
+			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			const firebaseConfig = {
+			  apiKey: "AIzaSyCWZ4efggnXhx2898J-dtewSBP9vE-v534",
+			  authDomain: "forecasting-963b0.firebaseapp.com",
+			  projectId: "forecasting-963b0",
+			  storageBucket: "forecasting-963b0.appspot.com",
+			  messagingSenderId: "386172274311",
+			  appId: "1:386172274311:web:914be4ba5b8d8e1983da22",
+			  measurementId: "G-ZYL6FLWW5B"
+			};
+		  
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+			const analytics = getAnalytics(app);
+		  </script>
     <script src="{{ url_for('static', filename='js/jquery.min.js' )}}"></script>
     <script src="{{ url_for('static', filename='js/popper.js' )}}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js' )}}"></script>
