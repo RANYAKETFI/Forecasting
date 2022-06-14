@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<h1>Forcast </h1>
+<h2> Forcast is a web app for timeseries prediction</h2>
+<h3>It is made with : Flask(python) and Prophet. </h3>
+<div  class="containter" style=" background-color: #ffffff;width: 700px;" >
+    <h4> References : </h4>
+    <ul>
+        <li>
+            <a href="https://flask.palletsprojects.com/en/2.1.x/">Flask.</a>
+
+        </li>
+        <br>
+        <li>
+            <a href="https://facebook.github.io/prophet/"> Prophet. </a>
+
+        </li>
+        <br>
+        <li>
+            <a href="https://machinelearningmastery.com/time-series-forecasting-with-prophet-in-python/">Time series forcasting using prophet.</a>
+        </li>
+    </ul>
+</div>
+<div  class="containter" style=" background-color: #ffffff;width: 700px;" >
+    <h4> Usefull datasets to test with : </h4>
+    <ul>
+        <li>
+            <a href="{{ url_for('static', filename='daily-total-female-births.csv')}}">Daily female births.</a>
+
+        </li>
+        <br>
+        <li>
+            <a href="{{ url_for('static', filename='daily-min-temperatures.csv')}}"> Daily mimum temperatures. </a>
+
+        </li>
+        <br>
+        <li>
+            <a href="{{ url_for('static', filename='monthly-sunspots.csv')}}"> Monthly sunspots. </a>
+
+        </li>
+        <br>
+        <li>
+            <a href="{{ url_for('static', filename='mean_temps.csv')}}"> Mean tempetures. </a>
+
+        </li>
+        <br>
+        <li>
+            <a href="{{ url_for('static', filename='shampoo_sales.csv')}}" >Shampoo Sales.</a>
+        </li>
+    </ul>
+</div>
+<p> Check out fonctionnalities on the side bar menu.</p>
+{% endblock %}

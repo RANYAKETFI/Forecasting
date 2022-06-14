@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<h2> Forcasting : </h2>
+<h6>What is forcasting ? </h6> 
+     <p> Forecasting is the process of making predictions based on past and present data.  </p>
+<center>
+
+{% if pl %}
+<h4>  Visualizing Data</h4>
+
+<div  class="containter" style=" background-color: #ffffff;width: 900px;" >
+
+    <div id="mygraph"></div>
+
+</div>
+<br>
+<br>
+<h4> <b> Step 2 </b>: Model specification</h4>
+<div  class="containter" style=" background-color: #ffffff;width: 900px;" >
+    <form action="http://localhost:5000/data" method="POST" name="myForm" onsubmit="return validateForm()" >
+
+          <div class="form-group">    
+            <label for=""> <h5> Chose a forcast period in : 
+              {% if freq=="M" %}
+              <b> (In Months) </b>
+              {% endif %}
+              {% if freq=="D" %}
+              <b> (In days) </b>
+              {% endif %}
+
+              {% if freq=="Y" %}
+              <b> (In years) </b>
+              {% endif %}
+
+             </h5> </label>
+            <br>
+            <input type="number" name="period"  min="0" required>
+          </div>
+          <h5> Specify focast <b>Growth</b> : </h5>
+    <div class="from-group">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="d" id="linear" value="linear" checked>
+            <label class="form-check-label" for="exampleRadios1">
+    Linear        </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="d" onclick="javascript:yesnoCheck();" id="logistic" value="logistic">
+            <label class="form-check-label" for="exampleRadios2">
+              Logistic
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="d" id="flat" value="flat">
+            <label class="form-check-label" for="exampleRadios2">
+              Flat
+            </label>
+          </div>
+         
+    </div>
+    
+    
+    <input type="hidden" id="step" name="step" value="{{filename}}">
+    <div class="from-group">
+
+    <div id="ifYes" style="display:none;margin-top:3%;">
+      <h5> Please specifiy maximum and minimum capacity:</h5>
+      <br>
+      <label for="">Minimum </label>  <input type='number' min="0.01" step="0.01"  id='min' name='min'  /> 
+      <br>
+      <label for="">Maximum</label>  <input type='number'step="0.01"   id='max' name='max' />      
+</div>
+  </div>
+    <div class="form-group">
+        <button type="submit" style=" color: #ffffff;width:150px;" class="form-control btn btn-primary submit px-3">Forcast</button>
+    </div>
+</form>
+<br>
+<br>
+
+</div>
+
+{% endif %}
+
+
+</center>
+
+{% endblock %}
+{% block sc %}
+
+<script>
+   function yesnoCheck() {
+        if (document.getElementById('logistic').checked) {
+           document.getElementById('ifYes').style.display = 'block';
+        } else {
+           document.getElementById('ifYes').style.display = 'none';
+        }}
+  function validateForm() {
+  let x = document.forms["myForm"]["min"].value;
+  let y = document.forms["myForm"]["max"].value;
+  let log=document.forms["myForm"]["logistic"].checked;
+
+  if (log)
+  {
+  if (x>y) 
+  {
+    alert("The minium must be greater than the maxium.");
+    return false;
+  }
+else {
+  if(x == null || x == ''  || x==undefined)
+  {
+    alert("The minium must not be empty when chosing logistic regression");
+    return false;
+  }
+  if(y == null | y == ''  || y==undefined)
+  {
+    alert("The maximum must not be empty when chosing logistic regression");
+    return false;
+  }
+  return true;
+}}
+  else {
+    return true;
+  }
+}
+</script>
+<script>
+ var is_res={{res|safe}};
+
+ var x={{x|safe}}
+  var y={{y|safe}}
+  var res=[]
+  var json = JSON.parse(x)
+  var json2=JSON.parse(y)
+  var res2=[]
+     for(var d in json){
+res.push(json[d]);}
+for(var d in json2){
+res2.push(json2[d]);}
+  console.log("x is ",res)
+    var data = [
+  {
+    x: res,
+    y: res2,
+    mode: 'markers',
+  type: 'scatter'
+  }
+];
+Plotly.newPlot('mygraph', data,{
+yaxis: {
+    title: 'y',
+},
+xaxis: {
+    title: 'ds',
+}
+
+});
+  console.log("hello",is_res["res"])
+  /**if (is_res["res"]==true)  {
+  console.log('x1 us',x1);
+  var x1={{x1|safe}};
+  
+  var y1={{y1|safe}};
+  var res_r=[]
+  var json_r = JSON.parse(x)
+  var json2_r=JSON.parse(y)
+  var res2_r=[]
+for(var d in json_r){
+res_r.push(json_r[d]);}
+for(var d in json2_r){
+res2_r.push(json2_r[d]);}
+    var data2 = [
+  {
+    x: res_r,
+    y: res2_r,
+    type: 'scatter'
+  }
+];
+Plotly.newPlot('mygraph2', data2,{yaxis: { title: 'y',},xaxis: { title: 'ds',}});
+}**/
+
+</script>
+{% endblock %}

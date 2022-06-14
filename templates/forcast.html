@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<h2> Forcasting : </h2>
+<h6>What is forcasting ? </h6> 
+     <p> Forecasting is the process of making predictions based on past and present data.  </p>
+<center>
+    <h4><b> Step 1</b> : Uploading Data</h4>
+<div class="containter" style=" background-color: #ffffff;width: 900px;">
+     
+      <h5> Chose a dataset to forcast : </h5>
+      <form method="POST" action="http://localhost:5000/forcast" enctype="multipart/form-data">
+        <div class="form-group">    
+    <label for="">Make sure your data has 2 columns (dates and target) </label>
+    <br>
+    <input type="file" name="data" required>
+  </div>
+<p  style="color: #ff1f1f">
+{{erreur}}
+</p>  <div class="form-group">
+    <button type="submit" style=" color: #ffffff;width:150px;" class="form-control btn btn-primary submit px-3"
+    name="btn" value="Save">Upload data</button>
+</div>
+<input type="hidden" id="step" name="step" value="1">
+
+      </form>
+     
+
+    </div>
+<br>
+<br>
+<!-- {% if pl %}
+<h4> <b> Step 2</b>: Visualizing Data</h4>
+
+<div  class="containter" style=" background-color: #ffffff;width: 900px;" >
+
+    <div id="mygraph"></div>
+
+</div>
+<br>
+<br>
+<h4> <b> Step 3 </b>: Model specification</h4>
+<div  class="containter" style=" background-color: #ffffff;width: 900px;" >
+    <form action=""method="POST"> </form>
+    <h5>Chose forcast seasonality </h5>
+    <div class="from-group">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="seas" id="d" value="d" checked>
+            <label class="form-check-label" for="exampleRadios1">
+    Daily        </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="seas" id="m" value="m">
+            <label class="form-check-label" for="exampleRadios2">
+              Monthly
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="seas" id="y" value="y">
+            <label class="form-check-label" for="exampleRadios2">
+              Yearly
+            </label>
+          </div>
+          <div class="form-group">    
+            <label for=""> <h5> Chose a forcast period </h5> </label>
+            <br>
+            <input type="number" name="period"  min="0" required>
+          </div>
+          <h5> Growth : </h5>
+    <div class="from-group">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="d" id="linear" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+    Linear        </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="d" id="logistic" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+              Logistic
+            </label>
+          </div>
+         
+    </div>
+    <input type="hidden" id="step" name="step2" value="2">
+
+    <div class="form-group">
+        <button type="submit" style=" color: #ffffff;width:150px;" class="form-control btn btn-primary submit px-3">Forcast</button>
+    </div>
+    <div id="mygraph"></div>
+
+</div>
+
+{% endif %}
+
+
+</center>
+
+{% endblock %}
+{% block sc %}
+
+
+<script>
+  var x={{x|safe}}
+  var y={{y|safe}}
+  var res=[]
+  var json = JSON.parse(x)
+  var json2=JSON.parse(y)
+  var res2=[]
+     for(var d in json){
+
+res.push(json[d]);}
+for(var d in json2){
+
+res2.push(json2[d]);}
+
+  console.log("x is ",res)
+    var data = [
+  {
+    x: res,
+    y: res2,
+    type: 'scatter'
+  }
+];
+
+Plotly.newPlot('mygraph', data,{
+  
+yaxis: {
+    title: 'y',
+},
+xaxis: {
+    title: 'ds',
+}
+
+});
+</script>
+{% endblock %} -->

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<h2> Forcasting : </h2>
+<h6>What is forcasting ? </h6> 
+     <p> Forecasting is the process of making predictions based on past and present data.  </p>
+<center>
+
+
+<div  class="containter" style=" background-color: #ffffff;width: 900px;" >
+    <h4> <b> Results</b> </h4>
+    <br>
+    <a href="{{new_filename}}" class="btn btn-primary"> Dowload Forecating results</a> 
+
+    <div id="mygraph2"></div>
+<br>
+<br>
+    </div>    
+</div>
+
+
+
+</center>
+
+{% endblock %}
+{% block sc %}
+
+
+<script>
+
+  var x1={{x1|safe}};
+  
+  var y1={{y1|safe}};
+  var x={{x|safe}};
+  var y={{y|safe}};
+
+  var original_x=[]
+  var original_y=[]
+  var j1 = JSON.parse(x)
+  var j2=JSON.parse(y)
+  for(var d in j1){
+    original_x.push(j1[d]);}
+for(var d in j2){
+  original_y.push(j2[d]);}
+  var res_r=[]
+  var json_r = x1
+  var json2_r=y1
+  var res2_r=[]
+for(var d in json_r){
+res_r.push(json_r[d]);}
+for(var d in json2_r){
+res2_r.push(json2_r[d]);}
+var forcast = {
+  x: res_r,
+    y: res2_r,
+    type: 'scatter',
+    name: 'Forcast',
+  line: {
+    color: 'rgb(219, 64, 82)',
+    width: 3
+  }
+};
+var original = {
+  x: original_x,
+  y: original_y,
+  mode: 'markers',
+  type: 'scatter',
+  name:'Original',
+  marker: { color:'rgb(0, 129, 82)' ,
+    size:3 }
+};
+
+
+var data2 =[forcast,original]
+Plotly.newPlot('mygraph2', data2,{yaxis: { title: 'y',},xaxis: { title: 'ds',}});
+
+
+</script>
+{% endblock %}

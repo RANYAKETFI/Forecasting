@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' )}}">
+
+    </head>
+  <body onload='document.form1.text1.focus()'>
+		
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center mb-5">
+                        <h2 class="heading-section">Register</h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-16">
+                        <div class="wrap d-md-flex">
+                            <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last" style="background-color:#9b66b3">
+                                <div class="text w-100">
+                                    <h2>Welcome to Register</h2>
+                                    <p style="color:#ffffff";>You already have an account?</p>
+                                    <a href="{{url_for('login')}}" style="color:#ffffff; border-color:#ffffff;" class="btn btn-white btn-outline-white">Sign In</a>
+                                </div>
+                      </div>
+                            <div class="login-wrap p-4 p-lg-5" style="background-color:#dcd0e1" >
+                          <div class="d-flex">
+                              <div class="w-200">
+                                  <h3 class="mb-4">Sign Up</h3>
+                              </div>
+                                
+                          </div>
+                                <form name="form1" action="#" method="POST" class="signin-form">
+                              <div class="form-group mb-3">
+                                  <label class="label" for="name">Username</label>
+                                  <input type="text" class="form-control" name="username" placeholder="Username" required>
+                              </div>
+                        <div class="form-group mb-3">
+                            <label class="label" for="password">Password</label>
+                          <input type="password" class="form-control" name="pwd" placeholder="Password" required>
+                        </div>
+
+                        {% if erreur %}
+                        <label class="label" style="color:#ff0b0b"; >Username already taken.</label>
+
+                        {% endif %}
+                        <div class="form-group">
+                            <button type="submit" onclick="CheckPassword(document.form1.pwd)" class="form-control btn btn-primary submit px-3" style="color:#ffffff;background-color: #9B66B3;">Sign Up</button>
+                        </div>
+                      
+                      </form>
+                    </div>
+                  </div>
+                    </div>
+                </div>
+            </div>
+        </section>         
+
+   
+  </body>
+  <script>
+    function CheckPassword(inputtxt) 
+{ 
+var passw=  /^[A-Za-z]\w{7,14}$/;
+if(inputtxt.value.match(passw)) 
+{ 
+return true;
+}
+else
+{ 
+alert('Password must contain 7 to 15 characters which contain only characters, numeric digits, underscore and first character must be a letter')
+return false;
+}
+}
+  </script>
+   <script src="{{ url_for('static', filename='js/jquery.min.js' )}}"></script>
+    <script src="{{ url_for('static', filename='js/popper.js' )}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js' )}}"></script>
+    <script src="{{ url_for('static', filename='js/main.js' )}}"></script>
+</html>
+
