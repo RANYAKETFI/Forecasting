@@ -15,3 +15,7 @@ sqlalchemy==1.4.27
 Cython==0.29.30
 holidays==0.14.2
 psycopg2==2.9.3
+flask-login==0.6.1
+flask-bcrypt==1.0.1
+flask-compress==1.12
+flask-wtf==1.0.1
