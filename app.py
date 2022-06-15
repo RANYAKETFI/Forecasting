@@ -209,7 +209,7 @@ def get_csv(filename):
         csv,
         mimetype="text/csv",
         headers={"Content-disposition":
-                 "attachment; filename=myplot.csv"})
+                 "attachment; filename=forcasting_results.csv"})
 
 if __name__=="__main__" : 
     app.run()
