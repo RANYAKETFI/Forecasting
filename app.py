@@ -131,7 +131,7 @@ def forcast():
            res=json.dumps(rdct)
            freq=get_freq(df)
 
-           return  redirect(url_for('data',filename=chosen_file,x=x,y=y,pl=True,res=res,freq=freq))
+           return   render_template('data.html',filename=chosen_file,x=x,y=y,pl=True,res=res,freq=freq)
           else : 
             return render_template("forcast.html",erreur="Check your csv file columns") 
            # m.fit(df)
