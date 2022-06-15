@@ -202,6 +202,14 @@ def result():
 @login_required
 def about():
     return render_template("about.html")   
+@app.route("/get_csv/<filename>")
+def get_csv(filename):
+    csv = filemane
+    return Response(
+        csv,
+        mimetype="text/csv",
+        headers={"Content-disposition":
+                 "attachment; filename=myplot.csv"})
 
 if __name__=="__main__" : 
     app.run()
