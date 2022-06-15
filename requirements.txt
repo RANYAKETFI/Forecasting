@@ -1,4 +1,4 @@
-numpy==1.15.4
+numpy==1.21.2
 Flask==1.0.2
 gunicorn==19.9.0
 fbprophet==0.6
