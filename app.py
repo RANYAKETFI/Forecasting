@@ -118,7 +118,7 @@ def forcast():
           f = request.files['data']
           f.save(secure_filename(f.filename))
           with open(f.filename) as csv_file:
-                 df = csv.read_csv(csv_file, delimiter=',')
+                 df = pd.read_csv(csv_file)
           #df=pd.read_csv(f.filename)
           chosen_file=f.filename
           if len(df.columns)==2 : 
