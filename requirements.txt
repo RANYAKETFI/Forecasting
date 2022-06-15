@@ -2,7 +2,7 @@ numpy==1.15.4
 Flask==1.0.2
 gunicorn==19.9.0
 fbprophet==0.6
-pandas==0.23.0
+pandas==1.2.3
 plotly==4.8.2
 pystan==2.19.1.1
 requests==2.20.1
