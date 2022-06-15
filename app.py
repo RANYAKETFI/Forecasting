@@ -117,8 +117,7 @@ def forcast():
           
           f = request.files['data']
           f.save(secure_filename(f.filename))
-          rel_to_cwd_path = os.path.join(script_dir, f.filename)
-          df=pd.read_csv(rel_to_cwd_path)
+          df=pd.read_csv(f.filename)
           chosen_file=f.filename
           if len(df.columns)==2 : 
            col1=df.columns[0]
