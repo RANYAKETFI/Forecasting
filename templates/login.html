@@ -18,6 +18,10 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 text-center mb-5">
                         <h2 class="heading-section">Login</h2>
+			    {% if reussi %}
+                        <label class="label" style="color:#00FF00"; >Account created successufully.</label>
+
+                        {% endif %}	
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -49,7 +53,9 @@
                             <label class="label" for="password">Password</label>
                           <input type="password" class="form-control" name="pwd" placeholder="Password" required>
                         </div>
-					<p> {{erreur}} </p>
+					{% if erreur %}
+					  <label class="label" style="color:#ff0b0b"; >Username already taken.</label>
+					{% endif %}
                         <div class="form-group">
                             <button type="submit" class="form-control btn btn-primary submit px-3" style="color:#ffffff;background-color: #9B66B3;">Sign In</button>
                         </div>
