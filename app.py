@@ -176,7 +176,7 @@ def data():
           forecast = m.predict(future)
           y_hat = forecast['yhat'].tolist()
           dates = forecast['ds'].apply(lambda x: str(x).split(' ')[0]).tolist()
-          new_filename="static/forecast_results_"+str(f)
+          new_filename="forecast_results_"+str(f)
           forecast.to_csv(new_filename)
 
           #dates=forecast['ds'].to_json()
