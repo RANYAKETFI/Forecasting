@@ -177,8 +177,8 @@ def data():
           y_hat = forecast['yhat'].tolist()
           dates = forecast['ds'].apply(lambda x: str(x).split(' ')[0]).tolist()
           new_filename="forecast_results_"+str(f)
-          forecast.to_csv(new_filename)
-
+          d=forecast.to_csv(new_filename)
+          d.save(d.filename)
           #dates=forecast['ds'].to_json()
           y1=json.dumps(y_hat)
           x1=json.dumps(dates)
@@ -186,7 +186,7 @@ def data():
           y=json.dumps(df["y"].to_json())
           
           json.dumps({"res":True})
-          return   render_template("result.html",new_filename=new_filename,filename=request.args.get("filename"),pl=request.args.get('pl'),x1=x1,y1=y1,x=x,y=y,res={ "res": "true"}) 
+          return   render_template("result.html",new_filename=d.filename,filename=request.args.get("filename"),pl=request.args.get('pl'),x1=x1,y1=y1,x=x,y=y,res={ "res": "true"}) 
 
     
      return   render_template("data.html",filename=request.args.get("filename"),x=request.args.get('x'),y=request.args.get('y'),pl=request.args.get('pl'),res={ "res": "false"},freq=request.args.get("freq")) 
@@ -198,6 +198,7 @@ def result():
     return  render_template("result.html") 
 
 @app.route('/about')
+
 @login_required
 def about():
     return render_template("about.html")   
