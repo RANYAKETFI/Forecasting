@@ -11,6 +11,7 @@ from datetime import datetime
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 import json
+import os 
 
 import plotly.express as px
 import matplotlib.pyplot as plt
@@ -111,13 +112,13 @@ def home():
 @login_required
 
 def forcast():
-
     if request.method=="POST":
-
+          script_dir = os.path.dirname(__file__)
+          
           f = request.files['data']
           f.save(secure_filename(f.filename))
-        
-          df=pd.read_csv(f.filename)
+          rel_to_cwd_path = os.path.join(script_dir, f.filename)
+          df=pd.read_csv(rel_to_cwd_path)
           chosen_file=f.filename
           if len(df.columns)==2 : 
            col1=df.columns[0]
