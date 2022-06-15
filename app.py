@@ -115,8 +115,9 @@ def forcast():
     if request.method=="POST":
 
           f = request.files['data']
-          #f.save(secure_filename(f.filename))
-          df=pd.read_csv(f.filename)
+          f.save(secure_filename(f.filename))
+           
+          df=pd.read_csv(f)
           chosen_file=f.filename
           if len(df.columns)==2 : 
            col1=df.columns[0]
