@@ -12,4 +12,6 @@ itsdangerous==2.0.1
 Werkzeug==2.0.2
 flask-sqlalchemy==2.5.1
 sqlalchemy==1.4.27
-
+Cython==0.29.30
+holidays==0.14.2
+psycopg2==2.9.3
