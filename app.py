@@ -20,7 +20,7 @@ plt.style.use('fivethirtyeight')
 app=Flask(__name__)
 db=SQLAlchemy(app)
 bcrypt = Bcrypt(app)
-app.config['SQLALCHEMY_DATABASE_URI'] ='postgres://virifootynkawq:9527c9522ba230bd8b032c08938849efcc11be8390bdfd12b0192f3785b9ac29@ec2-52-71-23-11.compute-1.amazonaws.com:5432/dc416806kv7niu'
+app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql://virifootynkawq:9527c9522ba230bd8b032c08938849efcc11be8390bdfd12b0192f3785b9ac29@ec2-52-71-23-11.compute-1.amazonaws.com:5432/dc416806kv7niu'
 app.config['SECRET_KEY'] ='sk'
 
 
