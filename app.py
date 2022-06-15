@@ -92,9 +92,9 @@ def login():
      if user:
             if bcrypt.check_password_hash(user.password, pwd):
                 login_user(user)
-                print("here")
                 return redirect(url_for('home'))
-     print("here")           
+     else : 
+        render_template("login.html",erreur="User does not exist")      
     return render_template("login.html")
 @app.route('/logout', methods=['GET', 'POST'])
 @login_required
