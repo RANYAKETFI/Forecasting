@@ -81,7 +81,7 @@ def register():
       return redirect(url_for('login'))
 
     return render_template('register.html',erreur=check)
-
+@app.route("/",methods=['GET', 'POST'])
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
@@ -199,6 +199,7 @@ def result():
 @app.route('/about')
 @login_required
 def about():
-    return render_template("about.html")    
+    return render_template("about.html")   
+
 if __name__=="__main__" : 
     app.run(debug=False,host="0.0.0.0")
