@@ -144,7 +144,7 @@ def forcast():
         return render_template("forcast.html")   
 
 
-@app.route("/data",methods=['GET', 'POST'])
+@app.route("/forcast/data",methods=['GET', 'POST'])
 @login_required
 
 def data():
@@ -189,7 +189,7 @@ def data():
     
      return   render_template("data.html",filename=request.args.get("filename"),x=request.args.get('x'),y=request.args.get('y'),pl=request.args.get('pl'),res={ "res": "false"},freq=request.args.get("freq")) 
 
-@app.route('/data/result',methods=['GET', 'POST'])
+@app.route('/forcast/data/result',methods=['GET', 'POST'])
 @login_required
 
 def result():
