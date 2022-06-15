@@ -41,7 +41,7 @@ def load_user(user_id):
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255), nullable=False, unique=True)
-    password = db.Column(db.LargeBinary(60), nullable=False)
+    password = db.Column(db.String(255), nullable=False)
 
 
 
@@ -74,7 +74,7 @@ def register():
      if check : 
         return render_template('register.html',erreur=check)
      else : 
-      hashed_password = bcrypt.generate_password_hash(pwd)
+      hashed_password = bcrypt.generate_password_hash(pwd).decode('utf-8')
       new_user = User(username=username, password=hashed_password)
       db.session.add(new_user)
       db.session.commit()
