@@ -204,7 +204,7 @@ def about():
     return render_template("about.html")   
 @app.route("/get_csv/<filename>")
 def get_csv(filename):
-    csv = filemane
+    csv = filename
     return Response(
         csv,
         mimetype="text/csv",
