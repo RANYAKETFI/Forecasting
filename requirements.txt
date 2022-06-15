@@ -1,8 +1,8 @@
-Flask==1.1.2
+numpy==1.15.4
+Flask==1.0.2
 gunicorn==19.9.0
-fbprophet==0.6
-matplotlib==3.2.2
-pandas==1.0.5
+fbprophet==0.3
+pandas==0.23.0
 plotly==4.8.2
 pystan==2.19.1.1
-requests==2.26.0
+requests==2.20.1
