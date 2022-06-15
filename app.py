@@ -177,8 +177,8 @@ def data():
           y_hat = forecast['yhat'].tolist()
           dates = forecast['ds'].apply(lambda x: str(x).split(' ')[0]).tolist()
           new_filename="forecast_results_"+str(f)
-          d=forecast.to_csv(new_filename)
-          d.save(d.filename)
+          forecast.to_csv(new_filename)
+   
           #dates=forecast['ds'].to_json()
           y1=json.dumps(y_hat)
           x1=json.dumps(dates)
