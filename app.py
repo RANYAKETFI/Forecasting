@@ -78,7 +78,7 @@ def register():
       new_user = User(username=username, password=hashed_password)
       db.session.add(new_user)
       db.session.commit()
-      return render_template('register.html',reussi=True)
+      return render_template('login.html',reussi=True)
 
     return render_template('register.html',erreur=check)
 @app.route("/",methods=['GET', 'POST'])
@@ -93,7 +93,7 @@ def login():
                 login_user(user)
                 return redirect(url_for('home'))
      else : 
-        render_template("login.html",erreur="User does not exist")      
+        render_template("login.html",erreur=True)      
     return render_template("login.html")
 @app.route('/logout', methods=['GET', 'POST'])
 @login_required
